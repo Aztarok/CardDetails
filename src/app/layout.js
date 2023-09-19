@@ -1,6 +1,7 @@
 import Image from "next/image"
 import './globals.css'
 import { Inter } from 'next/font/google'
+import Link from "next/link"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -10,27 +11,34 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body className={inter.className}><div className="bg-white flex max-h-screen justify-start relative">
-            <img src="./bg-main-desktop.png" alt="desktop background" className=""/>
-            <div className="absolute mt-[8%] ml-[10%]">
-                <img className="absolute mt-[1.5em] ml-[1.5em]" src="./card-logo.svg" alt="card"/>
-                <p className="absolute  mt-[4.5em] ml-[.75em] text-3xl">9591 6489 6389 1011</p>
-                <div className="flex justify-between w-[25em] absolute mt-[12em] ml-[1.5em]">
-                    <p className="">FELICIA LEIRE</p>
-                    <p className="">09/26</p>
+    return (
+        <html lang="en">
+            <body className={inter.className}>
+                <div className="bg-white flex max-h-screen justify-start relative">
+                    <img src="./bg-main-desktop.png" alt="desktop background" className=""/>
+                    <div className="absolute mt-[8%] ml-[10%]">
+                        <img className="absolute mt-[1.5em] ml-[1.5em]" src="./card-logo.svg" alt="card"/>
+                        <p className="absolute  mt-[4.5em] ml-[.75em] text-3xl">9591 6489 6389 1011</p>
+                        <div className="flex justify-between w-[25em] absolute mt-[12em] ml-[1.5em]">
+                            <p className="">FELICIA LEIRE</p>
+                            <p className="">09/26</p>
+                        </div>
+                        <img className="" src="./bg-card-front.png" alt="card"/>
+                    </div>
+                    <div className="absolute mt-[27%] ml-[15%]  rounded-xl shadow-[0_-20px_20px_rgb(0,0,0,0.12)]">
+                        <p className="absolute text-xl mt-[5.35em] ml-[18em]">123</p>
+                        <img className="" src="./bg-card-back.png" alt="card"/>
+                    </div>
+                    <div className="flex flex-1 justify-center items-center">
+                        {children}
+                    </div>
+                    <div className="absolute bottom-0 mb-10 right-1/2 text-veryDarkViolet font-bold text-xl">
+                        Made by
+                        <span className="h-10 underline-ffset-2 underline transition-all duration-500 hover:bg-gradient-to-r from-primaryOne to-primaryTwo hover:text-blue-300 hover:underline-white decoration-2">
+                            <Link target="_blank" href="https://github.com/Aztarok" passHref={true}>Aztarok</Link></span>
+                    </div>
                 </div>
-                <img className="" src="./bg-card-front.png" alt="card"/>
-            </div>
-            <div className="absolute mt-[27%] ml-[15%]  rounded-xl shadow-[0_-20px_20px_rgb(0,0,0,0.12)]">
-                <p className="absolute text-xl mt-[5.35em] ml-[18em]">123</p>
-                <img className="" src="./bg-card-back.png" alt="card"/>
-            </div>
-            <div className="flex flex-1 justify-center items-center">
-                {children}
-            </div>
-        </div></body>
-    </html>
-  )
+            </body>
+        </html>
+    )
 }
