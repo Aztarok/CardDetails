@@ -18,10 +18,11 @@ const CardForm = () => {
 
     useEffect(() => {
         const storedValue = localStorage.getItem("card", card);
-        if (storedValue) {
-            setCard(storedValue);
-        }
+        
+        console.log("hi")
         setCardValues(JSON.stringify(card));
+        localStorage.setItem("card", cardValues);
+    
     }, []);
     
     const router = useRouter();
