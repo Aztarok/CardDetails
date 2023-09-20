@@ -17,11 +17,13 @@ const CardForm = () => {
     
 
     useEffect(() => {
-        const storedValue = localStorage.getItem("card", card);
+        if (card === initialValue) {
+            console.log("hi")
+            setCardValues(JSON.stringify(card));
+            console.log()
+            localStorage.setItem("card", JSON.stringify(card));
+        }
         
-        console.log("hi")
-        setCardValues(JSON.stringify(card));
-        localStorage.setItem("card", cardValues);
     
     }, []);
     
