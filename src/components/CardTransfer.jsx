@@ -22,7 +22,7 @@ const CardTransfer = () => {
             setMonth(card.month);
             setYear(card.year);
             setCvc(card.cvc);
-            
+            router.refresh();
         }
         console.log(card);
     }, [])
