@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 const CardTransfer = () => {
-
+    const router = useRouter();
     const [name, setName] = useState("");
     const [cardNum, setCardNum] = useState("");
     const [month, setMonth] = useState("");
@@ -22,8 +22,9 @@ const CardTransfer = () => {
             setMonth(card.month);
             setYear(card.year);
             setCvc(card.cvc);
-            router.refresh();
         }
+        
+        router.refresh();
         console.log(card);
     }, [])
     
