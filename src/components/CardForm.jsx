@@ -1,9 +1,28 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React from 'react'
+import React, {useState, useEffect } from 'react';
+
+
 
 const CardForm = () => {
+
+    const initialValue = {"name": "Jane Appleseed",
+    "cardNum": "0000 0000 0000 0000",
+    "month": "00",
+    "year": "00",
+    "cvc": "000"};
+    const [card, setCard] = useState(initialValue);
+    const [cardValues, setCardValues] = useState("");
+    
+
+    useEffect(() => {
+        const storedValue = localStorage.getItem("card", card);
+        if (storedValue) {
+            setCard(storedValue);
+        }
+        setCardValues(JSON.stringify(card));
+    }, [setCard]);
     
     const router = useRouter();
 
@@ -11,7 +30,8 @@ const CardForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-
+        localStorage.setItem("card", cardValues);
+        
         router.push("/complete");
     }
     return (
@@ -19,9 +39,12 @@ const CardForm = () => {
             {/* name */}
             <div>
                 <label className="text-veryDarkViolet font-bold text-sm">CARDHOLDER NAME</label>
-                <input type="text" className="p-2 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md w-full" placeholder="e.g Jane Appleseed"/>
+                <input onChange={e => setSearchParams(prev => {
+                    prev.set("q", e.target.value);
+                    return prev;
+                })} type="text" className="p-2 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md w-full" placeholder="e.g Jane Appleseed"/>
             </div>
-
+            
             {/* Card number */}
             <div>
                 <label className="text-veryDarkViolet font-bold text-sm">CARD NUMBER</label>
