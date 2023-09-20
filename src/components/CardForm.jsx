@@ -22,7 +22,7 @@ const CardForm = () => {
             setCard(storedValue);
         }
         setCardValues(JSON.stringify(card));
-    }, [setCard]);
+    }, []);
     
     const router = useRouter();
 
