@@ -8,7 +8,7 @@ import React, {useState, useEffect } from 'react';
 const CardForm = () => {
 
     const initialValue = {"name": "Jane Appleseed",
-    "cardNum": "0000 0000 0000 0000",
+    "cardNum": "0000 1000 0000 0010",
     "month": "00",
     "year": "00",
     "cvc": "000"};
@@ -22,8 +22,6 @@ const CardForm = () => {
             localStorage.setItem("card", JSON.stringify(card));
             router.refresh();
         }
-        
-    
     }, []);
     
     const router = useRouter();

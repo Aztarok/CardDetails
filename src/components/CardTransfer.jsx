@@ -9,7 +9,8 @@ const CardTransfer = () => {
     const [cvc, setCvc] = useState("");
     const [date, setDate] = useState("");
     let card;
-
+    let dataCheck = 1;
+    
     useEffect(() => {
         const timer = setTimeout(() => {
             let cardValue = (localStorage.getItem("card"));
@@ -31,7 +32,7 @@ const CardTransfer = () => {
 
         return () => clearTimeout(timer);
 
-    }, [])
+    }, [dataCheck])
     
 
 
