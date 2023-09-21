@@ -16,18 +16,12 @@ const CardTransfer = () => {
             let cardValue = (localStorage.getItem("card"));
             // cardcard = cardcard.replace(/[{}]/g, "");
             if (cardValue) {
-                console.log(cardValue)
                 card = JSON.parse(cardValue);   
                 setName(card.name);
                 setCardNum(card.cardNum);
                 setCvc(card.cvc);
                 setDate(`${card.month} /\ ${card.year}`);
             }
-            console.log(card);
-            
-            console.log(cardValue)
-            
-            console.log(date);
         }, 10)
 
         return () => clearTimeout(timer);
