@@ -18,10 +18,9 @@ const CardForm = () => {
 
     useEffect(() => {
         if (card === initialValue) {
-            console.log("hi")
             setCardValues(JSON.stringify(card));
-            console.log()
             localStorage.setItem("card", JSON.stringify(card));
+            router.refresh();
         }
         
     
