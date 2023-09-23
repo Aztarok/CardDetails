@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
                             src="./card-logo.svg"
                             alt="card"
                         />
-                        <CardTransfer />
+                        <CardTransfer show={true} />
                         <img
                             className=""
                             src="./bg-card-front.png"

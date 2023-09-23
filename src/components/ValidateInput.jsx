@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const ValidateInput = ({ nameOfValidity, classes, setThisValue }) => {
+const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue }) => {
     // Finding out what type of validation this input will be checking for
     const type = nameOfValidity;
 
@@ -57,6 +57,7 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue }) => {
         const inputValue = event.target.value;
         setName(inputValue);
         clearTimeout(typingTimeout);
+        setValue(inputValue);
 
         setIsTyping(true);
 

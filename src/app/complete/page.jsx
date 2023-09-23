@@ -1,8 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import CardTransfer from "@/components/CardTransfer";
 
 export default function Complete() {
     const router = useRouter();

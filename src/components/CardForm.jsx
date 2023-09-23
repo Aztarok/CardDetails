@@ -1,47 +1,76 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import ValidateInput from "./ValidateInput";
+import CardTransfer from "./CardTransfer";
 
 const CardForm = () => {
-    // Initial Value
-    const initialValue = {
-        name: "Jane Appleseed",
-        cardNum: "0000 0000 0000 0000",
-        month: "00",
-        year: "00",
-        cvc: "000"
-    };
-    const [cardValues, setCardValues] = useState("");
+    // Initial Values
     const [nameValid, setNameValid] = useState(false);
     const [cardValid, setCardValid] = useState(false);
     const [monthValid, setMonthValid] = useState(false);
     const [yearValid, setYearValid] = useState(false);
     const [cvcValid, setCvcValid] = useState(false);
-    let checker = [nameValid, cardValid, monthValid, yearValid, cvcValid];
+    // let checker = [nameValid, cardValid, monthValid, yearValid, cvcValid];
+    let checker = [nameValid];
+
+    const [currentName, setCurrentName] = useState("");
+    const [currentCard, setCurrentCard] = useState("");
+    const [currentMonth, setCurrentMonth] = useState("");
+    const [currentYear, setCurrentYear] = useState("");
+    const [currentCvc, setCurrentCvc] = useState("");
 
     const router = useRouter();
+    const initialValue = useMemo(() => getValues(), []);
+    const movies = useRef(null);
+    function getValues() {
+        return currentName === ""
+            ? {
+                  name: "Jane Appleseed",
+                  cardNum: "0000 0000 0000 0000",
+                  month: "00",
+                  year: "00",
+                  cvc: "000"
+              }
+            : {
+                  name: currentName,
+                  cardNum: currentCard,
+                  month: currentMonth,
+                  year: currentYear,
+                  cvc: currentCvc
+              };
+    }
 
     useEffect(() => {
         if (initialValue) {
-            setCardValues(JSON.stringify(initialValue));
             localStorage.setItem("card", JSON.stringify(initialValue));
         }
-    }, []);
+    }, [initialValue]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        localStorage.setItem("card", cardValues);
         if (!checker.includes(false)) {
+            movies.current = {
+                name: currentName,
+                cardNum: currentCard,
+                month: currentMonth,
+                year: currentYear,
+                cvc: currentCvc
+            };
+            localStorage.setItem("card", JSON.stringify(movies.current));
+            const event = new Event("cardDataUpdated");
+            window.dispatchEvent(event);
             router.push("/complete");
         }
     };
+
     return (
         <form
             onSubmit={(e) => handleSubmit(e)}
             className="flex flex-col w-[30em] gap-[2em]"
         >
+            <CardTransfer show={false} />
             {/* name */}
             <div>
                 <label className="text-veryDarkViolet font-bold text-sm">
@@ -54,6 +83,7 @@ const CardForm = () => {
                         "p-2 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md w-full"
                     }
                     setThisValue={setNameValid}
+                    setValue={setCurrentName}
                 />
             </div>
 
@@ -68,6 +98,7 @@ const CardForm = () => {
                         "p-2 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md w-full"
                     }
                     setThisValue={setCardValid}
+                    setValue={setCurrentCard}
                 />
             </div>
 
@@ -88,6 +119,7 @@ const CardForm = () => {
                             "p-2 w-16 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md"
                         }
                         setThisValue={setMonthValid}
+                        setValue={setCurrentMonth}
                     />
                     <ValidateInput
                         nameOfValidity={"year"}
@@ -95,6 +127,7 @@ const CardForm = () => {
                             "p-2 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md w-16"
                         }
                         setThisValue={setYearValid}
+                        setValue={setCurrentYear}
                     />
                     <ValidateInput
                         nameOfValidity={"cvc"}
@@ -102,6 +135,7 @@ const CardForm = () => {
                             "ml-2 p-2 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md w-full"
                         }
                         setThisValue={setCvcValid}
+                        setValue={setCurrentCvc}
                     />
                 </div>
             </div>
