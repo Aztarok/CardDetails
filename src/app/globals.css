@@ -3,25 +3,81 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+    --lightGrayishViolet: hsl(270, 3%, 87%);
+    --wowViolet: hsl(279, 6%, 55%);
+    --veryDarkViolet: hsl(278, 68%, 11%);
+    --primaryOne: hsl(249, 99%, 64%);
+    --primaryTwo: hsl(278, 94%, 30%);
+    --redError: hsl(0, 100%, 66%);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+            to bottom,
+            transparent,
+            rgb(var(--background-end-rgb))
+        )
+        rgb(var(--background-start-rgb));
+}
+
+/* .gradient-border:focus {
+    position: relative;
+    border: 2px solid transparent;
+    outline: none;
+    background-clip: content-box;
+
+    border-image-slice: 1;
+    border-image-source: linear-gradient(
+        to right,
+        var(--primaryOne),
+        var(--redError)
+    );
+    border-radius: 50px;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+
+    outline: none;
+    overflow: hidden;
+    perspective: 1px;
+} */
+
+/* .gradient-border:focus::after {
+    border: 2px solid transparent;
+    outline: none;
+    background-clip: content-box;
+
+    border-image-slice: 1;
+    border-image-source: linear-gradient(
+        to right,
+        var(--primaryOne),
+        var(--redError)
+    );
+    border-radius: 50px;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+
+    outline: none;
+    overflow: hidden;
+    perspective: 1px;
+} */
+
+.gradient-border {
+    background: linear-gradient(white, white) padding-box,
+        linear-gradient(to right, var(--primaryOne), var(--primaryTwo))
+            border-box;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    outline: none;
 }

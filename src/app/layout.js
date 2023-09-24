@@ -1,9 +1,11 @@
 import CardTransfer from "@/components/CardTransfer";
-import { Inter } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
+import CardFront from "@/components/CardFront";
+import CardBack from "@/components/CardBack";
 
-const inter = Inter({ subsets: ["latin"] });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 export const metadata = {
     title: "Create Next App",
@@ -13,29 +15,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body className={spaceGrotesk.className}>
                 <div className="bg-white flex h-screen justify-start relative">
                     <img
                         src="./bg-main-desktop.png"
                         alt="desktop background"
                         className=""
                     />
-                    <div className="absolute mt-[8%] ml-[10%]">
-                        <img
-                            className="absolute mt-[3.5em] ml-[1.5em]"
-                            src="./card-logo.svg"
-                            alt="card"
-                        />
-                        <CardTransfer show={true} />
-                        <img
-                            className=""
-                            src="./bg-card-front.png"
-                            alt="card"
-                        />
-                    </div>
-                    <div className="absolute mt-[27%] ml-[15%]  rounded-xl shadow-[0_-20px_20px_rgb(0,0,0,0.12)]">
-                        <img className="" src="./bg-card-back.png" alt="card" />
-                    </div>
+                    <CardFront />
+                    <CardBack />
                     <div className="flex flex-1 justify-center items-center">
                         {children}
                     </div>

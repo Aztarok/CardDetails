@@ -6,13 +6,16 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue }) => {
     // Finding out what type of validation this input will be checking for
     const type = nameOfValidity;
 
-    // Checks
+    // Validation Regex for Checks
     const nameRegex =
         /^[\p{Lu}\p{Pd},][\p{L}\p{Mn}\p{Pd},]*\s[\p{Lu}\p{Pd},][\p{L}\p{Mn}\p{Pd},]*$/u;
     const cardRegex = /^4[0-9]{12}(?:[0-9]{3})?$/i;
     const monthRegex = /^(0[1-9]|1[0-2])$/i;
     const yearRegex = /^[0-9]{2}$/i;
     const cvcRegex = /^[0-9]{3}$/i;
+
+    // Applying styles depending if the input is focused or not
+    const [isFocused, setIsFocused] = useState(false);
 
     // Validation Check Variables
     const [name, setName] = useState("");
@@ -80,20 +83,26 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue }) => {
     return (
         <>
             {!isTyping && errorMessage ? (
-                <input
-                    onChange={handleInputChange}
-                    value={name}
-                    type="text"
-                    className={`${classes} bg-red-600`}
-                    placeholder={`${place}`}
-                />
+                <>
+                    <input
+                        onChange={handleInputChange}
+                        value={name}
+                        type="text"
+                        className={`${classes} bg-red-600`}
+                        placeholder={`${place}`}
+                    />
+                </>
             ) : (
                 <input
                     onChange={handleInputChange}
                     value={name}
                     type="text"
-                    className={classes}
+                    className={`${classes} ${
+                        isFocused ? "gradient-border" : ""
+                    }`}
                     placeholder={`${place}`}
+                    onFocus={() => setIsFocused(true)}
+                    onBlur={() => setIsFocused(false)}
                 />
             )}
         </>

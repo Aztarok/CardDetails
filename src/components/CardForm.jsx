@@ -12,8 +12,7 @@ const CardForm = () => {
     const [monthValid, setMonthValid] = useState(false);
     const [yearValid, setYearValid] = useState(false);
     const [cvcValid, setCvcValid] = useState(false);
-    // let checker = [nameValid, cardValid, monthValid, yearValid, cvcValid];
-    let checker = [nameValid];
+    let checker = [nameValid, cardValid, monthValid, yearValid, cvcValid];
 
     const [currentName, setCurrentName] = useState("");
     const [currentCard, setCurrentCard] = useState("");
