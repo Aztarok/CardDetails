@@ -38,14 +38,14 @@ const CardTransfer = ({ show }) => {
         <>
             {show ? (
                 <>
-                    <p className="absolute  mt-[4.5em] ml-[7.5%] text-3xl">
+                    <p className="absolute lg:mt-[30%] lg:ml-[7.5%] lg:text-3xl md:text-xl text-sm">
                         {cardNum}
                     </p>
-                    <div className="flex justify-between w-[85%] absolute mt-[12.5em] ml-[7%]">
+                    <div className="flex justify-between w-[85%] absolute lg:mt-[45%] lg:ml-[7%] lg:text-lg">
                         <p className="">{name}</p>
                         <p className="">{date}</p>
                     </div>
-                    <div className="absolute text-xl mt-[88.5%] ml-[102%] z-30">
+                    <div className="absolute text-xl lg:mt-[88.5%] lg:ml-[69%] z-30">
                         {cvc}
                     </div>
                 </>

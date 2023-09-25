@@ -2,8 +2,7 @@ import CardTransfer from "@/components/CardTransfer";
 import { Space_Grotesk } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
-import CardFront from "@/components/CardFront";
-import CardBack from "@/components/CardBack";
+import Cards from "@/components/Cards";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
@@ -22,8 +21,7 @@ export default function RootLayout({ children }) {
                         alt="desktop background"
                         className=""
                     />
-                    <CardFront />
-                    <CardBack />
+                    <Cards />
                     <div className="flex flex-1 justify-center items-center">
                         {children}
                     </div>

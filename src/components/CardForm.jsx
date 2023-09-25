@@ -79,7 +79,7 @@ const CardForm = () => {
                 <ValidateInput
                     nameOfValidity={"name"}
                     classes={
-                        "p-2 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md w-full"
+                        "p-2 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md w-full outline-none"
                     }
                     setThisValue={setNameValid}
                     setValue={setCurrentName}
