@@ -115,7 +115,7 @@ const CardForm = () => {
                     <ValidateInput
                         nameOfValidity={"month"}
                         classes={
-                            "p-2 w-16 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md"
+                            "p-2 w-16 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"
                         }
                         setThisValue={setMonthValid}
                         setValue={setCurrentMonth}
@@ -123,7 +123,7 @@ const CardForm = () => {
                     <ValidateInput
                         nameOfValidity={"year"}
                         classes={
-                            "p-2 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md w-16"
+                            "p-2 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md w-16 flex flex-wrap"
                         }
                         setThisValue={setYearValid}
                         setValue={setCurrentYear}
@@ -131,7 +131,7 @@ const CardForm = () => {
                     <ValidateInput
                         nameOfValidity={"cvc"}
                         classes={
-                            "ml-2 p-2 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md w-full"
+                            "ml-2 p-2 pr-[100px] text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"
                         }
                         setThisValue={setCvcValid}
                         setValue={setCurrentCvc}

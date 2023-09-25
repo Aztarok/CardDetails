@@ -22,6 +22,14 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue }) => {
         cvc: "e.g. 123",
     }[type];
 
+    const errors = {
+        name: "Valid name required",
+        cardNum: "Valid Card Number required",
+        month: "Valid month required",
+        year: "Valid year required",
+        cvc: "Valid CVC required",
+    }[type];
+
     const [isFocused, setIsFocused] = useState(false);
     const [name, setName] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -58,7 +66,7 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue }) => {
                 setTimeout(() => {
                     setIsTyping(false);
                     if (!validateCard(inputValue)) {
-                        setErrorMessage(`Valid ${type} required`);
+                        setErrorMessage(`${errors}`);
                     } else {
                         setErrorMessage("");
                     }
@@ -73,14 +81,14 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue }) => {
                 onChange={handleInputChange}
                 value={name}
                 type="text"
-                className={`${classes} ${isFocused ? "gradient-border" : ""} ${
-                    !isTyping && errorMessage ? "border-red-600" : ""
+                className={`${classes} ${!errorMessage && isFocused ? "gradient-border" : ""} ${
+                    !isTyping && errorMessage ? "border-red-600 outline-none" : ""
                 }`}
                 placeholder={place}
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
             />
-            {errorMessage && <span className="text-red-600">{errorMessage}</span>}
+            {errorMessage && <span className="text-red-600 flex absolute text-xs">{errorMessage}</span>}
         </div>
     );
 };
