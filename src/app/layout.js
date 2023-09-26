@@ -15,17 +15,17 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body className={spaceGrotesk.className}>
-                <div className="bg-white flex h-screen justify-start relative">
+                <div className="bg-white flex h-screen justify-start relative xl:flex-row lg:flex-row md:flex-row sm:flex-col flex-col">
                     <img
                         src="./bg-main-desktop.png"
                         alt="desktop background"
-                        className=""
+                        className="xl:w-[30%] lg:w-[20%] sm:w-[35%]  h-[30%] xl:h-full lg:h-full md:h-full sm:h-[30%]"
                     />
                     <Cards />
-                    <div className="flex flex-1 justify-center items-center">
+                    <div className="flex flex-1 sm:bg-black md:bg-red-500 lg:bg-blue-400 xl:bg-green-600 justify-center items-center">
                         {children}
                     </div>
-                    <div className="absolute bottom-0 mb-10 right-1/2 text-veryDarkViolet font-bold text-xl">
+                    <div className="absolute bottom-0 right-0  text-veryDarkViolet font-bold text-xl  bg-blue-400 p-2">
                         Made by{" "}
                         <span className="h-10 underline-ffset-2 underline transition-all duration-500 hover:bg-gradient-to-r from-primaryOne to-primaryTwo hover:text-blue-300 hover:underline-white decoration-2">
                             <Link

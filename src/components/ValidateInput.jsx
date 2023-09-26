@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue }) => {
+const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue, divClasses }) => {
     const type = nameOfValidity;
 
     const validationRegex = {
@@ -76,12 +76,12 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue }) => {
     };
 
     return (
-        <div>
+        <div className={`${divClasses} border-none`}>
             <input
                 onChange={handleInputChange}
                 value={name}
                 type="text"
-                className={`${classes} ${!errorMessage && isFocused ? "gradient-border" : ""} ${
+                className={`box-border w-[100%] ${classes} ${!errorMessage && isFocused ? "gradient-border" : ""} ${
                     !isTyping && errorMessage ? "border-red-600 outline-none" : ""
                 }`}
                 placeholder={place}

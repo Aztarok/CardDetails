@@ -67,7 +67,7 @@ const CardForm = () => {
     return (
         <form
             onSubmit={(e) => handleSubmit(e)}
-            className="flex flex-col w-[30em] gap-[2em]"
+            className="flex flex-col w-[30em] sm:ml-auto sm:w-[90%]  gap-[2em]"
         >
             <CardTransfer show={false} />
             {/* name */}
@@ -111,28 +111,31 @@ const CardForm = () => {
                         CVC
                     </label>
                 </div>
-                <div className="flex gap-2">
+                <div className="grid grid-cols-6 gap-2 w-[100%]">
                     <ValidateInput
                         nameOfValidity={"month"}
-                        classes={
-                            "p-2 w-16 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"
+                        divClasses={
+                            "col-span-1"
                         }
+                        classes={"text-sm p-2 border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"}
                         setThisValue={setMonthValid}
                         setValue={setCurrentMonth}
                     />
                     <ValidateInput
                         nameOfValidity={"year"}
-                        classes={
-                            "p-2 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md w-16 flex flex-wrap"
+                        divClasses={
+                            "col-span-1"
                         }
+                        classes={"text-sm p-2 border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"}
                         setThisValue={setYearValid}
                         setValue={setCurrentYear}
                     />
                     <ValidateInput
                         nameOfValidity={"cvc"}
-                        classes={
-                            "ml-2 p-2 pr-[100px] text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"
+                        divClasses={
+                            "ml-2 col-span-4"
                         }
+                        classes={"text-sm p-2 border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"}
                         setThisValue={setCvcValid}
                         setValue={setCurrentCvc}
                     />

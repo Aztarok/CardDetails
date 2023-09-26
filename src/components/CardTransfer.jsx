@@ -45,7 +45,7 @@ const CardTransfer = ({ show }) => {
                         <p className="">{name}</p>
                         <p className="">{date}</p>
                     </div>
-                    <div className="absolute text-xl lg:mt-[88.5%] lg:ml-[69%] z-30">
+                    <div className="absolute text-xl xl:mt-[103.8%] xl:ml-[52%] lg:mt-[88.5%] lg:ml-[69%] z-30">
                         {cvc}
                     </div>
                 </>
