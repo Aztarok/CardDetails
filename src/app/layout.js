@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
                     <img
                         src="./bg-main-desktop.png"
                         alt="desktop background"
-                        className="xl:w-[30%] lg:w-[20%] sm:w-[35%]  h-[30%] xl:h-full lg:h-full md:h-full sm:h-[30%]"
+                        className="xl:w-[30%] lg:w-[30%] sm:w-[35%]  h-[30%] xl:h-full lg:h-full md:h-full sm:h-[30%]"
                     />
                     <Cards />
                     <div className="flex flex-1 sm:bg-black md:bg-red-500 lg:bg-blue-400 xl:bg-green-600 justify-center items-center">
