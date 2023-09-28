@@ -6,6 +6,12 @@ import ValidateInput from "./ValidateInput";
 import CardTransfer from "./CardTransfer";
 
 const CardForm = () => {
+
+    const lol = (num) => {
+        console.log(num);
+    }
+    const [sendingNameValue, setSendingNameValue] = useState(true);
+    const [sendingDateValue, setSendingDateValue] = useState(true);
     // Initial Values
     const [nameValid, setNameValid] = useState(false);
     const [cardValid, setCardValid] = useState(false);
@@ -57,6 +63,8 @@ const CardForm = () => {
                 year: currentYear,
                 cvc: currentCvc
             };
+
+            console.log(sendingValue);
             localStorage.setItem("card", JSON.stringify(movies.current));
             const event = new Event("cardDataUpdated");
             window.dispatchEvent(event);
@@ -64,26 +72,31 @@ const CardForm = () => {
         }
     };
 
+
     return (
         <form
             onSubmit={(e) => handleSubmit(e)}
-            className="flex flex-col w-[30em] sm:ml-auto sm:w-[90%]  gap-[2em]"
+            className="flex flex-col w-[30em] sm:ml-auto sm:w-[90%]  gap-[5vh]"
         >
-            <CardTransfer show={false} />
+            <CardTransfer show={false} setCvcNum={lol}/>
             {/* name */}
             <div>
                 <label className="text-veryDarkViolet font-bold text-sm">
                     CARDHOLDER NAME
                 </label>
-
+                
                 <ValidateInput
                     nameOfValidity={"name"}
                     classes={
-                        "p-2 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md w-full outline-none"
+                        "p-2 text-md border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md w-full outline-none"
                     }
                     setThisValue={setNameValid}
                     setValue={setCurrentName}
+                    sendBack={setSendingNameValue}
                 />
+
+                {!sendingNameValue ? (<div className="text-redError absolute">wow</div>) : null}
+                
             </div>
 
             {/* Card number */}
@@ -94,7 +107,7 @@ const CardForm = () => {
                 <ValidateInput
                     nameOfValidity={"cardNum"}
                     classes={
-                        "p-2 text-sm border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md w-full"
+                        "p-2 text-md border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md w-full"
                     }
                     setThisValue={setCardValid}
                     setValue={setCurrentCard}
@@ -103,7 +116,7 @@ const CardForm = () => {
 
             {/* Data and CVC */}
             <div>
-                <div className="flex gap-[1em]">
+                <div className="flex gap-[2.4vw]">
                     <label className="text-veryDarkViolet font-bold text-sm">
                         EXP. DATE (MM/YY)
                     </label>
@@ -111,31 +124,40 @@ const CardForm = () => {
                         CVC
                     </label>
                 </div>
-                <div className="grid grid-cols-6 gap-2 w-[100%]">
-                    <ValidateInput
-                        nameOfValidity={"month"}
-                        divClasses={
-                            "col-span-1"
-                        }
-                        classes={"text-sm p-2 border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"}
-                        setThisValue={setMonthValid}
-                        setValue={setCurrentMonth}
-                    />
-                    <ValidateInput
-                        nameOfValidity={"year"}
-                        divClasses={
-                            "col-span-1"
-                        }
-                        classes={"text-sm p-2 border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"}
-                        setThisValue={setYearValid}
-                        setValue={setCurrentYear}
-                    />
+                <div className="grid grid-cols-10 gap-2 w-[100%]">
+                    <div className="flex col-span-4 gap-2 flex-wrap">
+                        <div className="flex gap-2">
+                            <ValidateInput
+                                nameOfValidity={"month"}
+                                divClasses={
+                                    "col-span-2"
+                                }
+                                classes={"text-md p-2 border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"}
+                                setThisValue={setMonthValid}
+                                setValue={setCurrentMonth}
+                                sendBack={setSendingDateValue}
+                            />
+                            
+                            <ValidateInput
+                                nameOfValidity={"year"}
+                                divClasses={
+                                    "col-span-2"
+                                }
+                                classes={"text-md p-2 border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"}
+                                setThisValue={setYearValid}
+                                setValue={setCurrentYear}
+                                sendBack={setSendingDateValue}
+                            />
+                        </div>
+                        
+                        {!sendingDateValue ? (<div className="absolute mt-[5.5vh] text-redError">Valid date required</div>) : null}
+                    </div>
                     <ValidateInput
                         nameOfValidity={"cvc"}
                         divClasses={
-                            "ml-2 col-span-4"
+                            "ml-2 col-span-6"
                         }
-                        classes={"text-sm p-2 border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"}
+                        classes={"text-md p-2 border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"}
                         setThisValue={setCvcValid}
                         setValue={setCurrentCvc}
                     />

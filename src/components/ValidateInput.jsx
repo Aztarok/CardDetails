@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue, divClasses }) => {
+const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue, divClasses, sendBack }) => {
     const type = nameOfValidity;
 
     const validationRegex = {
@@ -25,7 +25,7 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue, divCla
     const errors = {
         name: "Valid name required",
         cardNum: "Valid Card Number required",
-        month: "Valid month required",
+        month: "Valid date required",
         year: "Valid year required",
         cvc: "Valid CVC required",
     }[type];
@@ -45,6 +45,7 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue, divCla
     const validateCard = (input) => {
         const check = currentRegex.test(input);
         setThisValue(check);
+        
         return check;
     };
 
@@ -54,10 +55,12 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue, divCla
         clearTimeout(typingTimeout);
         setValue(inputValue);
 
+        
         setIsTyping(true);
-
+        
         // Clear the error message when the user starts typing again
         setErrorMessage("");
+        sendBack(true);
 
         if (inputValue.trim() === "") {
             setErrorMessage("");
@@ -67,8 +70,10 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue, divCla
                     setIsTyping(false);
                     if (!validateCard(inputValue)) {
                         setErrorMessage(`${errors}`);
+                        sendBack(false);
                     } else {
                         setErrorMessage("");
+                        sendBack(true);
                     }
                 }, 1000)
             );
@@ -88,7 +93,7 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue, divCla
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
             />
-            {errorMessage && <span className="text-red-600 flex absolute text-xs">{errorMessage}</span>}
+            {/* {errorMessage && <span className="text-red-600 flex absolute text-xs">{errorMessage}</span>} */}
         </div>
     );
 };

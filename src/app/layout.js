@@ -1,4 +1,5 @@
-import CardTransfer from "@/components/CardTransfer";
+import CardBack from "@/components/CardBack";
+import CardFront from "@/components/CardFront";
 import { Space_Grotesk } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
@@ -19,10 +20,13 @@ export default function RootLayout({ children }) {
                     <img
                         src="./bg-main-desktop.png"
                         alt="desktop background"
-                        className="xl:w-[30%] lg:w-[30%] sm:w-[35%]  h-[30%] xl:h-full lg:h-full md:h-full sm:h-[30%]"
+                        className="xl:w-[30%] lg:w-[30%] md:w-[25%] sm:w-[100%]  h-[30%] xl:h-full lg:h-full md:h-full sm:h-[30%]"
                     />
-                    <Cards />
-                    <div className="flex flex-1 sm:bg-black md:bg-red-500 lg:bg-blue-400 xl:bg-green-600 justify-center items-center">
+                    <div className="absolute bg-black xl:mt-[25vh] xl:w-[40vw]">
+                        <Cards />
+                    </div>
+                    
+                    <div className="flex flex-1 sm:bg-orange-500 md:bg-red-500 lg:bg-blue-400 xl:bg-white justify-center items-center">
                         {children}
                     </div>
                     <div className="absolute bottom-0 right-0  text-veryDarkViolet font-bold text-xl  bg-blue-400 p-2">
