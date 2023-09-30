@@ -2,7 +2,14 @@
 
 import { useEffect, useState } from "react";
 
-const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue, divClasses, sendBack }) => {
+const ValidateInput = ({
+    nameOfValidity,
+    classes,
+    setThisValue,
+    setValue,
+    divClasses,
+    sendBack
+}) => {
     const type = nameOfValidity;
 
     const validationRegex = {
@@ -10,7 +17,7 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue, divCla
         cardNum: /^4[0-9]{12}(?:[0-9]{3})?$/i,
         month: /^(0[1-9]|1[0-2])$/i,
         year: /^[0-9]{2}$/i,
-        cvc: /^[0-9]{3}$/i,
+        cvc: /^[0-9]{3}$/i
     };
 
     const currentRegex = validationRegex[type];
@@ -19,7 +26,7 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue, divCla
         cardNum: "e.g. 1234 5678 9123 0000",
         month: "MM",
         year: "YY",
-        cvc: "e.g. 123",
+        cvc: "e.g. 123"
     }[type];
 
     const errors = {
@@ -27,7 +34,7 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue, divCla
         cardNum: "Valid Card Number required",
         month: "Valid date required",
         year: "Valid year required",
-        cvc: "Valid CVC required",
+        cvc: "Valid CVC required"
     }[type];
 
     const [isFocused, setIsFocused] = useState(false);
@@ -45,7 +52,7 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue, divCla
     const validateCard = (input) => {
         const check = currentRegex.test(input);
         setThisValue(check);
-        
+
         return check;
     };
 
@@ -55,9 +62,8 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue, divCla
         clearTimeout(typingTimeout);
         setValue(inputValue);
 
-        
         setIsTyping(true);
-        
+
         // Clear the error message when the user starts typing again
         setErrorMessage("");
         sendBack(true);
@@ -86,8 +92,12 @@ const ValidateInput = ({ nameOfValidity, classes, setThisValue, setValue, divCla
                 onChange={handleInputChange}
                 value={name}
                 type="text"
-                className={`box-border w-[100%] ${classes} ${!errorMessage && isFocused ? "gradient-border" : ""} ${
-                    !isTyping && errorMessage ? "border-red-600 outline-none" : ""
+                className={`box-border w-[100%] ${classes} ${
+                    !errorMessage && isFocused ? "gradient-border" : ""
+                } ${
+                    !isTyping && errorMessage
+                        ? "border-red-600 outline-none"
+                        : ""
                 }`}
                 placeholder={place}
                 onFocus={() => setIsFocused(true)}

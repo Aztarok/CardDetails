@@ -77,7 +77,11 @@ body {
     background: linear-gradient(white, white) padding-box,
         linear-gradient(to right, var(--primaryOne), var(--primaryTwo))
             border-box;
-    border-radius: 5px;
     border: 2px solid transparent;
+    outline: none;
+}
+
+.error-border {
+    border: 2px solid var(--redError);
     outline: none;
 }
