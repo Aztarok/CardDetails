@@ -3,15 +3,15 @@
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import ValidateInput from "./ValidateInput";
-import CardTransfer from "./CardTransfer";
 
 const CardForm = () => {
-
     const lol = (num) => {
         console.log(num);
-    }
+    };
     const [sendingNameValue, setSendingNameValue] = useState(true);
+    const [sendingCardValue, setSendingCardValue] = useState(true);
     const [sendingDateValue, setSendingDateValue] = useState(true);
+    const [sendingCvcValue, setSendingCvcValue] = useState(true);
     // Initial Values
     const [nameValid, setNameValid] = useState(false);
     const [cardValid, setCardValid] = useState(false);
@@ -64,7 +64,6 @@ const CardForm = () => {
                 cvc: currentCvc
             };
 
-            console.log(sendingValue);
             localStorage.setItem("card", JSON.stringify(movies.current));
             const event = new Event("cardDataUpdated");
             window.dispatchEvent(event);
@@ -72,19 +71,17 @@ const CardForm = () => {
         }
     };
 
-
     return (
         <form
             onSubmit={(e) => handleSubmit(e)}
             className="flex flex-col w-[30em] sm:ml-auto sm:w-[90%]  gap-[5vh]"
         >
-            <CardTransfer show={false} setCvcNum={lol}/>
             {/* name */}
             <div>
                 <label className="text-veryDarkViolet font-bold text-sm">
                     CARDHOLDER NAME
                 </label>
-                
+
                 <ValidateInput
                     nameOfValidity={"name"}
                     classes={
@@ -95,8 +92,9 @@ const CardForm = () => {
                     sendBack={setSendingNameValue}
                 />
 
-                {!sendingNameValue ? (<div className="text-redError absolute">wow</div>) : null}
-                
+                {!sendingNameValue ? (
+                    <div className="text-redError absolute">wow</div>
+                ) : null}
             </div>
 
             {/* Card number */}
@@ -111,6 +109,7 @@ const CardForm = () => {
                     }
                     setThisValue={setCardValid}
                     setValue={setCurrentCard}
+                    sendBack={setSendingCardValue}
                 />
             </div>
 
@@ -129,37 +128,42 @@ const CardForm = () => {
                         <div className="flex gap-2">
                             <ValidateInput
                                 nameOfValidity={"month"}
-                                divClasses={
-                                    "col-span-2"
+                                divClasses={"col-span-2"}
+                                classes={
+                                    "text-md p-2 border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"
                                 }
-                                classes={"text-md p-2 border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"}
                                 setThisValue={setMonthValid}
                                 setValue={setCurrentMonth}
                                 sendBack={setSendingDateValue}
                             />
-                            
+
                             <ValidateInput
                                 nameOfValidity={"year"}
-                                divClasses={
-                                    "col-span-2"
+                                divClasses={"col-span-2"}
+                                classes={
+                                    "text-md p-2 border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"
                                 }
-                                classes={"text-md p-2 border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"}
                                 setThisValue={setYearValid}
                                 setValue={setCurrentYear}
                                 sendBack={setSendingDateValue}
                             />
                         </div>
-                        
-                        {!sendingDateValue ? (<div className="absolute mt-[5.5vh] text-redError">Valid date required</div>) : null}
+
+                        {!sendingDateValue ? (
+                            <div className="absolute mt-[5.5vh] text-redError">
+                                Valid date required
+                            </div>
+                        ) : null}
                     </div>
                     <ValidateInput
                         nameOfValidity={"cvc"}
-                        divClasses={
-                            "ml-2 col-span-6"
+                        divClasses={"ml-2 col-span-6"}
+                        classes={
+                            "text-md p-2 border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"
                         }
-                        classes={"text-md p-2 border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"}
                         setThisValue={setCvcValid}
                         setValue={setCurrentCvc}
+                        sendBack={setSendingCvcValue}
                     />
                 </div>
             </div>

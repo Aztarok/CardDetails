@@ -2,12 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-const CardTransfer = ({ show, setCvcNum,  }) => {
-    const [name, setName] = useState("");
-    const [cardNum, setCardNum] = useState("");
+const CardTransfer = ({ show, setName, setCardNum, setDate, setCvcNum }) => {
     const [cvc, setCvc] = useState("");
-    const [date, setDate] = useState("");
-    
+
     useEffect(() => {
         const updateCardData = () => {
             const cardValue = localStorage.getItem("card");
@@ -22,7 +19,7 @@ const CardTransfer = ({ show, setCvcNum,  }) => {
 
         // Update the card data when the component mounts
         updateCardData();
-        
+
         // Listen for the custom event
         window.addEventListener("cardDataUpdated", updateCardData);
 
@@ -34,9 +31,9 @@ const CardTransfer = ({ show, setCvcNum,  }) => {
 
     useEffect(() => {
         setTimeout(() => {
-            setCvcNum(cvc)
-        }, 100)
-    }, [setCvcNum, cvc])
+            setCvcNum(cvc);
+        }, 100);
+    }, [setCvcNum, cvc]);
 
     // Rest of your component code
 
