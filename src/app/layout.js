@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
                         className="2xl:w-[25vw] xl:w-[30%] lg:w-[30%] md:w-[25%] sm:w-[100%]  h-[30%] xl:h-full lg:h-full md:h-full sm:h-[30%]"
                     />
 
-                    <div className="flex flex-1 sm:bg-orange-500 md:bg-red-500 lg:bg-blue-400 xl:bg-white justify-center items-center">
+                    <div className="flex flex-1  sm:bg-orange-500 md:bg-red-500 lg:bg-blue-400 xl:bg-yellow-400 2xl:bg-slate-700 justify-center items-center">
                         {children}
                     </div>
                     <div className="absolute bottom-0 right-0  text-veryDarkViolet font-bold text-xl  bg-blue-400 p-2">
