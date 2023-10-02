@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 export default function Complete() {
     const router = useRouter();
     return (
-        <div className="flex flex-col gap-[4%] items-center w-[40%] h-[40%]">
+        <div className="flex flex-col gap-[4%] items-center w-[40vw] xl:h-[40vw] xl:mt-[10vw] lg:h-[40vw] lg:mt-[10vw] md:h-[40vw] md:mt-[10vw] sm:h-[40vw] sm:mt-[20vw] h-[80vw] mt-[30vw]">
             <div className="relative w-[5em] h-[5em]">
                 <Image
                     src="./icon-complete.svg"

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const CardTransfer = ({ show, setName, setCardNum, setDate, setCvcNum }) => {
+const CardTransfer = ({ setName, setCardNum, setDate, setCvcNum }) => {
     const [cvc, setCvc] = useState("");
 
     useEffect(() => {
@@ -35,23 +35,6 @@ const CardTransfer = ({ show, setName, setCardNum, setDate, setCvcNum }) => {
         }, 100);
     }, [setCvcNum, cvc]);
 
-    // Rest of your component code
-
-    // return (
-    //     <>
-    //         {show ? (
-    //             <>
-    //                 <p className="absolute xl:text-3xl xl:mt-[26%] lg:mt-[30%] lg:ml-[7.5%] lg:text-xl md:text-xl text-sm">
-    //                     {cardNum}
-    //                 </p>
-    //                 <div className="flex justify-between w-[85%] absolute xl:text-xl lg:mt-[43%] lg:ml-[7%] lg:text-md">
-    //                     <p className="">{name}</p>
-    //                     <p className="">{date}</p>
-    //                 </div>
-    //             </>
-    //         ) : null}
-    //     </>
-    // );
 };
 
 export default CardTransfer;
