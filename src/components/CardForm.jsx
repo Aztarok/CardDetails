@@ -5,9 +5,6 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
 import ValidateInput from "./ValidateInput";
 
 const CardForm = () => {
-    const lol = (num) => {
-        console.log(num);
-    };
     const [sendingNameValue, setSendingNameValue] = useState(true);
     const [sendingCardValue, setSendingCardValue] = useState(true);
     const [sendingDateValue, setSendingDateValue] = useState(true);
@@ -93,7 +90,7 @@ const CardForm = () => {
                 />
 
                 {!sendingNameValue ? (
-                    <div className="text-redError absolute">wow</div>
+                    <div className="text-redError absolute">Enter a valid name</div>
                 ) : null}
             </div>
 
