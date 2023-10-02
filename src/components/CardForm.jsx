@@ -71,7 +71,7 @@ const CardForm = () => {
     return (
         <form
             onSubmit={(e) => handleSubmit(e)}
-            className="flex flex-col w-[30em] sm:ml-auto sm:w-[90%]  gap-[5vh]"
+            className="flex flex-col w-[30em] 2xl:ml-[15vw] xl:ml-[10vw] lg:ml-[2vw] md:ml-[5vw] sm:mx-auto sm:w-[90%] gap-[5vh] 2xl:mt-[0vw] xl:mt-[0vw] lg:mt-[0vw] md:mt-[0vw] sm:mt-[25vw] sm:mb-[5vw] mt-[30vw] mb-[5vw]"
         >
             {/* name */}
             <div>
@@ -108,6 +108,9 @@ const CardForm = () => {
                     setValue={setCurrentCard}
                     sendBack={setSendingCardValue}
                 />
+                {!sendingCardValue ? (
+                    <div className="text-redError absolute">Enter a valid card number</div>
+                ) : null}
             </div>
 
             {/* Data and CVC */}
@@ -152,16 +155,22 @@ const CardForm = () => {
                             </div>
                         ) : null}
                     </div>
-                    <ValidateInput
-                        nameOfValidity={"cvc"}
-                        divClasses={"ml-2 col-span-6"}
-                        classes={
-                            "text-md p-2 border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"
-                        }
-                        setThisValue={setCvcValid}
-                        setValue={setCurrentCvc}
-                        sendBack={setSendingCvcValue}
-                    />
+                    <div className="col-span-6">
+                        <ValidateInput
+                            nameOfValidity={"cvc"}
+                            divClasses={"flex flex-col gap-2"}
+                            classes={
+                                "text-md p-2 border-lightGrayishViolet text-wowViolet placeholder-wowViolet border-2 rounded-md flex flex-wrap"
+                            }
+                            setThisValue={setCvcValid}
+                            setValue={setCurrentCvc}
+                            sendBack={setSendingCvcValue}
+                        />
+                        {!sendingCvcValue ? (
+                        <div className="text-redError absolute">Enter a valid cvc</div>
+                    ) : null}
+                    </div>
+                    
                 </div>
             </div>
 
